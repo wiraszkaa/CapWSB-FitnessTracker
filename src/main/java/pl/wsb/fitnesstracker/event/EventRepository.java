@@ -10,8 +10,8 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * Repository for managing Event entities.
- * Uses EntityManager for custom JPQL queries.
+ * Repository for managing Event entities. Uses EntityManager for custom JPQL
+ * queries.
  */
 @Repository
 public class EventRepository {
@@ -161,3 +161,12 @@ public class EventRepository {
         return query.getResultList();
     }
 }
+
+
+ 
+
+ 
+
+ 
+
+ 

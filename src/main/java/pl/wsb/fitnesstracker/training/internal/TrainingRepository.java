@@ -10,8 +10,8 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * Repository for managing Training entities.
- * Uses EntityManager for custom JPQL queries.
+ * Repository for managing Training entities. Uses EntityManager for custom JPQL
+ * queries.
  */
 @Repository
 public class TrainingRepository {
@@ -123,8 +123,7 @@ public class TrainingRepository {
     }
 
     /**
-     * Get total distance covered by a user.
-     * Uses native SQL query.
+     * Get total distance covered by a user. Uses native SQL query.
      *
      * @param userId the user ID
      * @return total distance
