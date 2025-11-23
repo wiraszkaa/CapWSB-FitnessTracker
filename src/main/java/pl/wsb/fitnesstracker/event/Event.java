@@ -7,7 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
 @Entity
 @Table(name = "event")
@@ -28,10 +28,10 @@ public class Event {
     private String description;
 
     @Column(name = "start_time", nullable = false)
-    private LocalDateTime startTime;
+    private Date startTime;
 
     @Column(name = "end_time", nullable = false)
-    private LocalDateTime endTime;
+    private Date endTime;
 
     @Column(name = "country", nullable = false)
     private String country;
@@ -42,8 +42,8 @@ public class Event {
     public Event(
             final String name,
             final String description,
-            final LocalDateTime startTime,
-            final LocalDateTime endTime,
+            final Date startTime,
+            final Date endTime,
             final String country,
             final String city) {
         this.name = name;

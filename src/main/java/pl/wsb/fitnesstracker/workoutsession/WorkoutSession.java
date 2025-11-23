@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 import pl.wsb.fitnesstracker.training.api.Training;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
 @Entity
 @Table(name = "workout_session")
@@ -27,7 +27,7 @@ public class WorkoutSession {
     private Training training;
 
     @Column(name = "timestamp", nullable = false)
-    private LocalDateTime timestamp;
+    private Date timestamp;
 
     @Column(name = "start_latitude", nullable = false)
     private double startLatitude;
@@ -46,7 +46,7 @@ public class WorkoutSession {
 
     public WorkoutSession(
             final Training training,
-            final LocalDateTime timestamp,
+            final Date timestamp,
             final double startLatitude,
             final double startLongitude,
             final double endLatitude,

@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 import pl.wsb.fitnesstracker.user.api.User;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 @Entity
 @Table(name = "health_metrics")
@@ -27,7 +27,7 @@ public class HealthMetrics {
     private User user;
 
     @Column(name = "date", nullable = false)
-    private LocalDate date;
+    private Date date;
 
     @Column(name = "weight")
     private Double weight;
@@ -38,7 +38,7 @@ public class HealthMetrics {
     @Column(name = "heart_rate")
     private Integer heartRate;
 
-    public HealthMetrics(User user, LocalDate date, Double weight, Double height, Integer heartRate) {
+    public HealthMetrics(User user, Date date, Double weight, Double height, Integer heartRate) {
         this.user = user;
         this.date = date;
         this.weight = weight;
