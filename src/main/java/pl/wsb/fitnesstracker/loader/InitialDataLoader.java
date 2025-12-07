@@ -1,8 +1,6 @@
 package pl.wsb.fitnesstracker.loader;
 
-import lombok.RequiredArgsConstructor;
 import lombok.ToString;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Profile;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
@@ -27,14 +25,20 @@ import static java.util.Objects.isNull;
  */
 @Component
 @Profile("loadInitialData")
-@Slf4j
 @ToString
-@RequiredArgsConstructor
 class InitialDataLoader {
 
-    private final JpaRepository<User, Long> userRepository;
+        private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(InitialDataLoader.class);
 
-    private final JpaRepository<Training, Long> trainingRepository;
+        private final JpaRepository<User, Long> userRepository;
+
+        private final JpaRepository<Training, Long> trainingRepository;
+
+        public InitialDataLoader(final JpaRepository<User, Long> userRepository,
+                                                         final JpaRepository<Training, Long> trainingRepository) {
+                this.userRepository = userRepository;
+                this.trainingRepository = trainingRepository;
+        }
 
     @EventListener
     @Transactional
@@ -72,6 +76,7 @@ class InitialDataLoader {
         users.add(generateUser("Noah", "Miller", 39));
         users.add(generateUser("Grace", "Anderson", 33));
         users.add(generateUser("Oliver", "Swift", 29));
+        users.add(generateUser("Mikołaj", "Święty", 0));
 
         return users;
     }

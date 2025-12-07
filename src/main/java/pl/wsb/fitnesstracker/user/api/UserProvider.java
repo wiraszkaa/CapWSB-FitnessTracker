@@ -30,4 +30,20 @@ public interface UserProvider {
      */
     List<User> findAllUsers();
 
+    /**
+     * Finds users whose email contains given fragment (case-insensitive)
+     *
+     * @param fragment fragment to search in email
+     * @return list of users matching
+     */
+    List<User> findUsersByEmailFragment(String fragment);
+
+    /**
+     * Finds users older than provided age (years)
+     *
+     * @param age minimal age (exclusive)
+     * @return list of users older than given age
+     */
+    List<User> findUsersOlderThan(int age);
+
 }

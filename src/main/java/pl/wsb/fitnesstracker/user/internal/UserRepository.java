@@ -20,4 +20,27 @@ interface UserRepository extends JpaRepository<User, Long> {
                 .findFirst();
     }
 
+    /**
+     * Finds users whose email contains the provided fragment (case-insensitive)
+     */
+    default java.util.List<User> findByEmailContainingIgnoreCase(String fragment) {
+        if (fragment == null) {
+            return findAll();
+        }
+        String lower = fragment.toLowerCase();
+        return findAll().stream()
+                .filter(u -> u.getEmail() != null && u.getEmail().toLowerCase().contains(lower))
+                .toList();
+    }
+
+    /**
+     * Finds users older than given age (years)
+     */
+    default java.util.List<User> findUsersOlderThan(int age) {
+        java.time.LocalDate threshold = java.time.LocalDate.now().minusYears(age);
+        return findAll().stream()
+                .filter(u -> u.getBirthdate() != null && u.getBirthdate().isBefore(threshold))
+                .toList();
+    }
+
 }
