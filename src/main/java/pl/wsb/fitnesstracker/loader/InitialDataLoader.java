@@ -25,23 +25,21 @@ import static java.util.Objects.isNull;
  * data, for the manual testing purposes. Loader is triggered by {@link ContextRefreshedEvent
  * } event
  */
-
 @Component
 @Profile("loadInitialData")
 @ToString
 class InitialDataLoader {
 
-        private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(InitialDataLoader.class);
+    private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(InitialDataLoader.class);
 
-        private final JpaRepository<User, Long> userRepository;
+    private final JpaRepository<User, Long> userRepository;
 
-        private final JpaRepository<Training, Long> trainingRepository;
+    private final JpaRepository<Training, Long> trainingRepository;
 
-        public InitialDataLoader(final JpaRepository<User, Long> userRepository,
-                                                         final JpaRepository<Training, Long> trainingRepository) {
-                this.userRepository = userRepository;
-                this.trainingRepository = trainingRepository;
-        }
+    public InitialDataLoader(final JpaRepository<User, Long> userRepository,
+            final JpaRepository<Training, Long> trainingRepository) {
+        this.userRepository = userRepository;
+        this.trainingRepository = trainingRepository;
     }
 
     @EventListener
