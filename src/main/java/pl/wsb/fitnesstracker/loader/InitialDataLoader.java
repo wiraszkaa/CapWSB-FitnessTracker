@@ -1,7 +1,6 @@
 package pl.wsb.fitnesstracker.loader;
 
 import lombok.ToString;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Profile;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
@@ -21,24 +20,28 @@ import static java.time.LocalDate.now;
 import static java.util.Objects.isNull;
 
 /**
- * Sample init data loader. If the application is run with `loadInitialData` profile, then on application startup it will fill the database with dummy data,
- * for the manual testing purposes. Loader is triggered by {@link ContextRefreshedEvent } event
+ * Sample init data loader. If the application is run with `loadInitialData`
+ * profile, then on application startup it will fill the database with dummy
+ * data, for the manual testing purposes. Loader is triggered by {@link ContextRefreshedEvent
+ * } event
  */
+
 @Component
 @Profile("loadInitialData")
-@Slf4j
 @ToString
 class InitialDataLoader {
 
-    private final JpaRepository<User, Long> userRepository;
+        private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(InitialDataLoader.class);
 
-    private final JpaRepository<Training, Long> trainingRepository;
+        private final JpaRepository<User, Long> userRepository;
 
-    InitialDataLoader(
-            final JpaRepository<User, Long> userRepository,
-            final JpaRepository<Training, Long> trainingRepository) {
-        this.userRepository = userRepository;
-        this.trainingRepository = trainingRepository;
+        private final JpaRepository<Training, Long> trainingRepository;
+
+        public InitialDataLoader(final JpaRepository<User, Long> userRepository,
+                                                         final JpaRepository<Training, Long> trainingRepository) {
+                this.userRepository = userRepository;
+                this.trainingRepository = trainingRepository;
+        }
     }
 
     @EventListener
@@ -72,6 +75,7 @@ class InitialDataLoader {
         users.add(generateUser("Noah", "Miller", 39));
         users.add(generateUser("Grace", "Anderson", 33));
         users.add(generateUser("Oliver", "Swift", 29));
+        users.add(generateUser("Mikołaj", "Święty", 0));
 
         return users;
     }
